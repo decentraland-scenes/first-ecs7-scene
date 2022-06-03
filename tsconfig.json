@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outFile": "./bin/game.js",
+    "allowJs": true,
+    "strict": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "./node_modules/@dcl/posix/index.d.ts",
+    "./node_modules/decentraland-ecs/types/@decentraland/EthereumController",
+    "./node_modules/decentraland-ecs/types/@decentraland/SocialController",
+    "./node_modules/decentraland-ecs/types/@decentraland/Identity",
+    "./node_modules/decentraland-ecs/types/@decentraland/web3-provider",
+    "./node_modules/decentraland-ecs/types/@decentraland/EnvironmentAPI",
+    "./node_modules/decentraland-ecs/types/@decentraland/ParcelIdentity",
+    "./node_modules/decentraland-ecs/types/@decentraland/PortableExperiences",
+    "./node_modules/decentraland-ecs/types/@decentraland/RestrictedActions",
+    "./node_modules/decentraland-ecs/types/@decentraland/SignedFetch",
+    "./node_modules/decentraland-ecs/types/@decentraland/Players"
+  ],
+  "extends": "./node_modules/decentraland-ecs/types/tsconfig.ecs7.json"
+}
