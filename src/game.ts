@@ -1,20 +1,10 @@
-function circularSystem() {
-  let t = 0.0
-  const sdk = engine.baseComponents
-  return (dt: number) => {
-    t += 2 * Math.PI * dt
+import { circularSystem } from './circularSystem'
+import { addSystem } from './helper/systems'
 
-    const entitiesWithBoxShapes = engine.groupOf(sdk.BoxShape)
-    for (const [entity] of entitiesWithBoxShapes) {
-      const transform = sdk.Transform.mutable(entity)
-      if (transform) {
-        transform.position.x = 8 + 2 * Math.cos(t)
-        transform.position.z = 8 + 2 * Math.sin(t)
-      }
-    }
-  }
-}
+// This would be exposed globally as is?
+const engine = Engine()
 
+// My cube generator
 function createCube(x: number, y: number, z: number) {
   const sdk = engine.baseComponents
   const myEntity = engine.addEntity()
@@ -35,10 +25,8 @@ function createCube(x: number, y: number, z: number) {
   return myEntity
 }
 
-const engine = Engine()
-
 createCube(8, 2, 8)
-engine.addSystem(circularSystem())
+addSystem(circularSystem, { t: 0 }, engine)
 
 ///###############################################
 ///###############################################

@@ -1,6 +1,9 @@
 # ECS7 Test scene
 This scene is built with the ECS7 in alpha state.
 
+- [] Implement transport
+- [] Implement apis support (old ecs ?)
+
 # Decentraland scene
 
 This folder contains all the necessary files to launch a Decentraland scene.
