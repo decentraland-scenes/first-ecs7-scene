@@ -1,20 +1,22 @@
 {
   "ecs7": true,
   "display": {
-    "title": "DCL Scene",
-    "description": "My new Decentraland project",
+    "title": "ECS7 Decentraland First Scene",
+    "description": "Test",
     "navmapThumbnail": "images/scene-thumbnail.png",
     "favicon": "favicon_asset"
   },
   "owner": "",
   "contact": {
-    "name": "author-name",
+    "name": "Lean",
     "email": ""
   },
   "main": "bin/game.js",
   "tags": [],
   "scene": {
-    "parcels": ["0,0"],
+    "parcels": [
+      "0,0"
+    ],
     "base": "0,0"
   },
   "spawnPoints": [
