@@ -4,6 +4,8 @@ This scene is built with the ECS7 in alpha state.
 - [] Implement transport
 - [] Implement apis support (old ecs ?)
 
+Run this preview with adding `&renderer-branch=feat%2Fenable-ecs7&kernel-branch=feat/implement-@dcl-rpc`
+
 # Decentraland scene
 
 This folder contains all the necessary files to launch a Decentraland scene.
