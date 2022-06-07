@@ -15,3 +15,27 @@ export function circularSystem(dt: number, state: CircularSystemState, engine: I
     }
   }
 }
+
+
+
+
+
+export function CircleHoverSystem (dt: number, state: CircularSystemState, engine: IEngine){
+
+	state.t +=  Math.PI * dt * 0.5
+
+	const entitiesWithBoxShapes = engine.groupOf(engine.baseComponents.BoxShape)
+ 
+    // iterate over the entities of the group
+	for (const [entity] of entitiesWithBoxShapes) {
+
+		const transform = engine.baseComponents.Transform.mutable(entity)
+
+
+      // mutate the rotation
+      transform.position.y = Math.cos(state.t + Math.sqrt(Math.pow(transform.position.x - 8, 2) + Math.pow(transform.position.z - 8, 2)) / Math.PI) * 2 + 2;
+      
+      //entity.getComponent(Material).albedoColor.set(transform.position.x / 16, transform.position.y / 16, transform.position.z / 4);
+    }
+  
+}

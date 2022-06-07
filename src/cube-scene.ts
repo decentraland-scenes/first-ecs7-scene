@@ -1,4 +1,4 @@
-import { circularSystem } from './circularSystem'
+import { CircleHoverSystem, circularSystem } from './circularSystem'
 import { createRendererTransport } from './helper/rendererTransport'
 import { timeOutUpdate } from './helper/setTimeout'
 import { addSystem } from './helper/systems'
@@ -16,7 +16,7 @@ function createCube(x: number, y: number, z: number) {
 
   sdk.Transform.create(myEntity, {
     position: { x, y, z },
-    scale: { x: 1, y: 1, z: 1 },
+    scale: { x: 0.5, y: 0.5, z: 0.5},
     rotation: { x: 0, y: 0, z: 0, w: 1 }
   })
 
@@ -30,11 +30,22 @@ function createCube(x: number, y: number, z: number) {
   return myEntity
 }
 
-createCube(8, 2, 8)
 
-addSystem(circularSystem, { t: 0 }, engine)
-engine.addSystem(timeOutUpdate)
+for (var x = 0.5; x < 16; x += 0.5) {
+  for (var y = 0.5; y < 16; y += 0.5) {
+    createCube(x, 0, y);
+  }
+}
+
+
+addSystem(CircleHoverSystem, { t: 0 }, engine)
+
 
 dcl.onUpdate((dt: number) => {
   engine.update(dt)
 })
+
+
+
+// engine.addSystem(timeOutUpdate)
+
