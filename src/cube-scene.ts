@@ -16,7 +16,7 @@ function createCube(x: number, y: number, z: number) {
 
   sdk.Transform.create(myEntity, {
     position: { x, y, z },
-    scale: { x: 0.5, y: 0.5, z: 0.5},
+    scale: { x: 1, y: 1, z: 1},
     rotation: { x: 0, y: 0, z: 0, w: 1 }
   })
 
@@ -31,8 +31,8 @@ function createCube(x: number, y: number, z: number) {
 }
 
 
-for (var x = 0.5; x < 16; x += 0.5) {
-  for (var y = 0.5; y < 16; y += 0.5) {
+for (var x = 0.5; x < 16; x += 1) {
+  for (var y = 0.5; y < 16; y += 1) {
     createCube(x, 0, y);
   }
 }
