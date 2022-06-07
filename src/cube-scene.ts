@@ -3,7 +3,7 @@ import { createRendererTransport } from './helper/rendererTransport'
 import { timeOutUpdate } from './helper/setTimeout'
 import { addSystem } from './helper/systems'
 
-// This would be exposed globally as is?
+// TODO: Define whether "Engine" will be exposed globally
 const engine = Engine({
   transports: [createRendererTransport()]
 })
