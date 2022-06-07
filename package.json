@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@dcl/eslint-config": "^1.0.1",
-    "decentraland-ecs": "https://sdk-team-cdn.decentraland.org/@dcl/js-sdk-toolchain/branch/feat/add-api-support-and-posix-newecs/decentraland-ecs-6.11.1-2450679365.commit-4e0854f.tgz"
+    "decentraland-ecs": "https://sdk-team-cdn.decentraland.org/@dcl/js-sdk-toolchain/branch/feat/add-api-support-and-posix-newecs/decentraland-ecs-6.11.1-2454352734.commit-068fd68.tgz"
   },
   "engines": {
     "node": ">=14.0.0",
