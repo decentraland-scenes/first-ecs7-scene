@@ -3,7 +3,7 @@ export type CircularSystemState = {
 }
 
 // My system
-export function circularSystem(dt: number, state: CircularSystemState, engine: IEngine) {
+export function circularSystem(dt: number, state: CircularSystemState) {
   state.t += 2 * Math.PI * dt
 
   const entitiesWithBoxShapes = engine.groupOf(engine.baseComponents.BoxShape)

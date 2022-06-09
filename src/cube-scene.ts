@@ -32,7 +32,10 @@ function createCube(x: number, y: number, z: number) {
 
 let myEntity = createCube(8, 2, 8)
 
-addSystem(circularSystem, { t: 0 }, engine)
+
+// addSystem without engine is a helper in this scene
+addSystem(circularSystem, { t: 0 })
+
 engine.addSystem(timeOutUpdate)
 
 dcl.onUpdate((dt: number) => {
@@ -43,4 +46,4 @@ dcl.onUpdate((dt: number) => {
 engine.baseComponents.AudioSource.create(myEntity, {audioClipUrl:"sounds/pickUp.mp3", loop: false, pitch:1, playing: false, volume:1 , playedAtTimestamp:1})
 
 
-addSystem(playSounds, { t: 0 }, engine)
+addSystem(playSounds, { t: 0 })
