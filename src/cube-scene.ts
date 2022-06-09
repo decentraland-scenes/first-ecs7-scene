@@ -27,7 +27,7 @@ function createCube(x: number, y: number, z: number) {
 createCube(8, 2, 8)
 
 // addSystem without engine is a helper in this scene
-addSystem(circularSystem, { t: 0 }, engine)
+addSystem(circularSystem, { t: 0 })
 
 // This is the native addSystem
 engine.addSystem(timeOutUpdate)
