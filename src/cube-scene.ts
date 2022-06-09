@@ -1,12 +1,6 @@
 import { circularSystem } from './circularSystem'
-import { createRendererTransport } from './helper/rendererTransport'
 import { timeOutUpdate } from './helper/setTimeout'
 import { addSystem } from './helper/systems'
-
-// TODO: Define whether "Engine" will be exposed globally
-const engine = Engine({
-  transports: [createRendererTransport()]
-})
 
 // My cube generator
 function createCube(x: number, y: number, z: number) {
@@ -32,9 +26,8 @@ function createCube(x: number, y: number, z: number) {
 
 createCube(8, 2, 8)
 
+// addSystem without engine is a helper in this scene
 addSystem(circularSystem, { t: 0 }, engine)
-engine.addSystem(timeOutUpdate)
 
-dcl.onUpdate((dt: number) => {
-  engine.update(dt)
-})
+// This is the native addSystem
+engine.addSystem(timeOutUpdate)
