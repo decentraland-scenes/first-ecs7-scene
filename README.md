@@ -4,7 +4,7 @@ This scene is built with the ECS7 in alpha state.
 - [] Implement transport
 - [] Implement apis support (old ecs ?)
 
-Run this preview with adding `&renderer-branch=feat%2Fenable-ecs7&kernel-branch=feat/implement-@dcl-rpc&ENABLE_ECS7=true`
+Run this preview with adding `&renderer-branch=master&kernel-branch=feat/implement-@dcl-rpc&ENABLE_ECS7=true`
 
 # Decentraland scene
 
