@@ -15,3 +15,28 @@ export function circularSystem(dt: number, state: CircularSystemState, engine: I
     }
   }
 }
+
+
+
+// My system
+export function playSounds(dt: number, state: CircularSystemState, engine: IEngine) {
+	state.t += dt
+
+	if(state.t < 2){
+		return
+	}
+
+	state.t = 0
+  
+	const entitiesWSound = engine.mutableGroupOf(engine.baseComponents.AudioSource)
+	for (const [entity, audioSource] of entitiesWSound) {
+
+		audioSource.volume = 10
+		audioSource.playedAtTimestamp = Date.now()
+		audioSource.pitch = 1//Math.random()*100
+		audioSource.playing = true
+		
+	
+  }
+}
+  

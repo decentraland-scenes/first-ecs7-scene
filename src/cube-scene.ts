@@ -1,4 +1,4 @@
-import { circularSystem } from './circularSystem'
+import { circularSystem, playSounds } from './circularSystem'
 import { createRendererTransport } from './helper/rendererTransport'
 import { timeOutUpdate } from './helper/setTimeout'
 import { addSystem } from './helper/systems'
@@ -30,7 +30,7 @@ function createCube(x: number, y: number, z: number) {
   return myEntity
 }
 
-createCube(8, 2, 8)
+let myEntity = createCube(8, 2, 8)
 
 addSystem(circularSystem, { t: 0 }, engine)
 engine.addSystem(timeOutUpdate)
@@ -38,3 +38,9 @@ engine.addSystem(timeOutUpdate)
 dcl.onUpdate((dt: number) => {
   engine.update(dt)
 })
+
+
+engine.baseComponents.AudioSource.create(myEntity, {audioClipUrl:"sounds/pickUp.mp3", loop: false, pitch:1, playing: false, volume:1 , playedAtTimestamp:1})
+
+
+addSystem(playSounds, { t: 0 }, engine)
