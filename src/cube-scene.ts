@@ -3,10 +3,6 @@ import { createRendererTransport } from './helper/rendererTransport'
 import { timeOutUpdate } from './helper/setTimeout'
 import { addSystem } from './helper/systems'
 
-// TODO: Define whether "Engine" will be exposed globally
-const engine = Engine({
-  transports: [createRendererTransport()]
-})
 
 // My cube generator
 function createCube(x: number, y: number, z: number) {
