@@ -19,7 +19,7 @@ export function circularSystem(dt: number, state: CircularSystemState) {
 
 
 // My system
-export function playSounds(dt: number, state: CircularSystemState, engine: IEngine) {
+export function playSounds(dt: number, state: CircularSystemState) {
 	state.t += dt
 
 	if(state.t < 4){
@@ -33,7 +33,7 @@ export function playSounds(dt: number, state: CircularSystemState, engine: IEngi
 
 		audioSource.volume = 1
 		audioSource.playedAtTimestamp = Date.now() + 100
-		 audioSource.pitch = 1//Math.random()*100
+		 audioSource.pitch = Math.random()*5
 		audioSource.playing = true
 		
 	
