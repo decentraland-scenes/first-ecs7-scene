@@ -20,7 +20,7 @@ export function circularSystem(dt: number, state: CircularSystemState) {
 
 
 
-export function CircleHoverSystem (dt: number, state: CircularSystemState, engine: IEngine){
+export function CircleHoverSystem (dt: number, state: CircularSystemState){
 
 	state.t +=  Math.PI * dt * 0.5
 
@@ -32,7 +32,7 @@ export function CircleHoverSystem (dt: number, state: CircularSystemState, engin
 		const transform = engine.baseComponents.Transform.mutable(entity)
 
 
-      // mutate the rotation
+      // mutate the position
       transform.position.y = Math.cos(state.t + Math.sqrt(Math.pow(transform.position.x - 8, 2) + Math.pow(transform.position.z - 8, 2)) / Math.PI) * 2 + 2;
       
       //entity.getComponent(Material).albedoColor.set(transform.position.x / 16, transform.position.y / 16, transform.position.z / 4);
