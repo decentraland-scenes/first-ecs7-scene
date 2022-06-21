@@ -1,10 +1,8 @@
 # ECS7 Test scene
 This scene is built with the ECS7 in alpha state.
 
-- [] Implement transport
-- [] Implement apis support (old ecs ?)
-
-Run this preview with adding `&renderer-branch=master&kernel-branch=feat/implement-@dcl-rpc&ENABLE_ECS7=true`
+1. Run `npm i`
+2. Run `npm start`
 
 # Decentraland scene
 
