@@ -20,7 +20,7 @@ export function circularSystem(dt: number, state: CircularSystemState) {
 
 
 
-export function CircleHoverSystem (dt: number, state: CircularSystemState, engine: IEngine){
+export function CircleHoverSystem (dt: number, state: CircularSystemState){
 
 	state.t +=  Math.PI * dt * 0.5
 

@@ -1,5 +1,4 @@
 import { CircleHoverSystem, circularSystem } from './circularSystem'
-import { createRendererTransport } from './helper/rendererTransport'
 import { timeOutUpdate } from './helper/setTimeout'
 import { addSystem } from './helper/systems'
 
