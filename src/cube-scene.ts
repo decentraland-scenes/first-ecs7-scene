@@ -1,12 +1,6 @@
 import { CircleHoverSystem, circularSystem } from './circularSystem'
-import { createRendererTransport } from './helper/rendererTransport'
 import { timeOutUpdate } from './helper/setTimeout'
 import { addSystem } from './helper/systems'
-
-// This would be exposed globally as is?
-const engine = Engine({
-  transports: [createRendererTransport()]
-})
 
 // My cube generator
 function createCube(x: number, y: number, z: number) {
@@ -38,7 +32,7 @@ for (var x = 0.5; x < 16; x += 1) {
 }
 
 
-addSystem(CircleHoverSystem, { t: 0 }, engine)
+addSystem(CircleHoverSystem, { t: 0 })
 
 
 dcl.onUpdate((dt: number) => {
