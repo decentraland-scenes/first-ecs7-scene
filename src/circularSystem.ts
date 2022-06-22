@@ -32,7 +32,7 @@ export function playSounds(dt: number, state: CircularSystemState) {
 	for (const [entity, audioSource] of entitiesWSound) {
 
 		audioSource.volume = 1
-		audioSource.playedAtTimestamp = Date.now() + 100
+		audioSource.playedAtTimestamp = Date.now()
 		 audioSource.pitch = Math.random()*5
 		audioSource.playing = true
 		
