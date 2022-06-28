@@ -33,6 +33,8 @@ addSystem(circularSystem, { t: 0 })
 
 engine.addSystem(timeOutUpdate)
 
+
+
 dcl.onUpdate((dt: number) => {
   engine.update(dt)
 })
@@ -88,20 +90,22 @@ engine.baseComponents.NFTShape.create(nft, {
 
 // 3d model
 
-const zombie = engine.addEntity(true)
+// const zombie = engine.addEntity(true)
 
-engine.baseComponents.Transform.create(zombie, {
-  position: { x:12, y:1, z:3 },
-  scale: { x: 1, y: 1, z: 1 },
-  rotation: { x: 0, y: 0, z: 0, w: 1 }
-})
+// engine.baseComponents.Transform.create(zombie, {
+//   position: { x:12, y:1, z:3 },
+//   scale: { x: 1, y: 1, z: 1 },
+//   rotation: { x: 0, y: 0, z: 0, w: 1 }
+// })
 
-engine.baseComponents.GLTFShape.create(zombie, {
-  withCollisions: true,
-  isPointerBlocker: true,
-  visible: true,
-  src:  'models/zombie.glb'
-})
+// engine.baseComponents.GLTFShape.create(zombie, {
+//   withCollisions: true,
+//   isPointerBlocker: true,
+//   visible: true,
+//   src:  'models/zombie.glb'
+// })
+
+
 
 // Text
 
@@ -140,3 +144,4 @@ engine.baseComponents.TextShape.create(text, {
  vTextAlign: "center",
  visible: true,
 })
+
