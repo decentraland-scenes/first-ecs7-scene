@@ -55,50 +55,6 @@ function moveSystem(dt: number) {
 }
 
 
-// function moveHasFinished(): boolean {
-// 	return this.normalizedTime >= 1
-//   }
-
-
-
- 
-
-//  /**
-// 	* Create a MoveTransformComponent instance to add as a component to a Entity
-// 	* @param start - starting position
-// 	* @param end - ending position
-// 	* @param duration - duration (in seconds) of start to end translation
-// 	* @param onFinishCallback - called when translation ends
-// 	* @param interpolationType - type of interpolation to be used (default: LINEAR)
-// 	*/
-// 	create(
-// 		start: ReadOnlyVector3,
-// 		end: ReadOnlyVector3,
-// 		duration: number,
-// 		onFinishCallback?: () => void,
-// 		interpolationType: InterpolationType = InterpolationType.LINEAR
-// 	  ) {
-// 		this.start = start
-// 		this.end = end
-// 		this.normalizedTime = 0
-// 		this.lerpTime = 0
-// 		this.onFinishCallback = onFinishCallback
-// 		this.interpolationType = interpolationType
-	
-// 		if (duration != 0) {
-// 		  this.speed = 1 / duration
-// 		} else {
-// 		  this.speed = 0
-// 		  this.normalizedTime = 1
-// 		  this.lerpTime = 1
-// 		}
-	
-// 		let instance = TransformSystem.createAndAddToEngine()
-// 		instance.addComponentType(MoveTransformComponent)
-// 	  }
-//   });
-
-
 engine.addSystem(moveSystem)
 
 
