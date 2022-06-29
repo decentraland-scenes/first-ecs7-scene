@@ -1,6 +1,6 @@
-namespace LegacyECS {
+export namespace LegacyECS {
   function logDclCall(...args: any[]) {
-    // dcl.log(...args)
+    dcl.log(...args)
   }
 
   // ECS6 core
