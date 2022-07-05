@@ -11,7 +11,7 @@ class RotatorSystem {
       const transform = entity.getComponent(Transform)
 
       // mutate the rotation
-      transform.rotate(Vector3.Up(), dt * 10)
+      // transform.rotate(Vector3.Up(), dt * 10)
     }
   }
 }
@@ -41,11 +41,41 @@ function spawnCube(x: number, y: number, z: number) {
 
 const cube = spawnCube(8, 1, 8)
 
+let otherCube: Entity | null = null
+let counter = 0
+
 cube.addComponent(
   new OnPointerDown(() => {
-    cube.getComponent(Transform).scale.z *= 1.1
-    cube.getComponent(Transform).scale.x *= 0.9
 
-    spawnCube(Math.random() * 8 + 1, Math.random() * 8, Math.random() * 8 + 1)
+    // cube.getComponent(Transform).scale.z *= 1.1
+    // cube.getComponent(Transform).scale.x *= 0.9
+
+    counter++
+    log({ counter })
+    switch (counter) {
+      case 1:
+      case 3:
+      case 6:
+        otherCube = spawnCube(Math.random() * 8 + 1, Math.random() * 8, Math.random() * 8 + 1)
+        break;
+
+      case 5:
+      case 2:
+        engine.removeEntity(otherCube!)
+        break
+
+      case 4:
+        otherCube?.removeComponent(BoxShape)
+        break;
+
+      case 7:
+        otherCube?.removeComponent(Transform)
+        break;
+
+
+      default:
+        break;
+    }
+
   })
 )

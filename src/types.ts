@@ -59,6 +59,17 @@ export enum ECS6_CLASS_ID {
   VISIBLE_ON_EDIT = 302
 }
 
+const ECS6_CLASS_ID_BYPASS = [
+  ECS6_CLASS_ID.UI_WORLD_SPACE_SHAPE,
+  ECS6_CLASS_ID.UI_SCREEN_SPACE_SHAPE,
+  ECS6_CLASS_ID.UI_CONTAINER_RECT,
+  ECS6_CLASS_ID.UI_CONTAINER_STACK,
+  ECS6_CLASS_ID.UI_TEXT_SHAPE,
+  ECS6_CLASS_ID.UI_INPUT_TEXT_SHAPE,
+  ECS6_CLASS_ID.UI_IMAGE_SHAPE,
+  ECS6_CLASS_ID.UI_SLIDER_SHAPE
+]
+
 export type Ecs6ComponentData = {
   classId?: number
   entityId?: string
@@ -74,6 +85,14 @@ export type ECS6State = {
 
   entities: Record<string, Entity>
   components: Record<string, Ecs6ComponentData>
+
+  ecs6: {
+    entities: Record<string, any>
+    components: Record<string, any>
+
+    dirtiyEntities: Set<string>
+    dirtyComponents: Set<string>
+  }
 }
 
 export type UpdateFunction = (state: ECS6State, ecs6EntityId: EntityID, payload: any) => void

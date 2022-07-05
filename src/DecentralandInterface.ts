@@ -1,5 +1,15 @@
-import { ecs7DeleteComponent, ecs7UpdateComponent } from './ecs7/bridge'
-import { ecs7EnsureEntity, ecs7EnsureMutable } from './ecs7/ECS7'
+import {
+  proxyAddEntity,
+  proxyAttachEntityComponent,
+  proxyComponentCreated,
+  proxyComponentDisposed,
+  proxyComponentUpdated,
+  proxyHandleTick,
+  proxyRemoveEntity,
+  proxyRemoveEntityComponent,
+  proxySetParent,
+  proxyUpdateEntityComponent
+} from './ecs6/ProxyEcs6'
 import { ECS6State } from './types'
 
 export namespace AdaptionLayer {
@@ -11,85 +21,43 @@ export namespace AdaptionLayer {
 
     entities: {},
     components: {}
-  }
-
-  function ensureEcs6ComponentState(id: string) {
-    if (state.components[id] === undefined) {
-      state.components[id] = {}
-    }
-    return state.components[id]
-  }
+  } as any
 
   // ECS6 core
   function attachEntityComponent(entityId: string, componentName: string, id: string): void {
-    const component = ensureEcs6ComponentState(id)
-    component.entityId = entityId
-    component.componentName = componentName
-    if (component.classId && component.data) {
-      ecs7UpdateComponent(state, component.entityId, component.classId, component.data)
-    }
+    proxyAttachEntityComponent(state, entityId, componentName, id)
   }
 
   function removeEntityComponent(entityId: string, componentName: string): void {
-    for (const [_id, component] of Object.entries(state.components)) {
-      if (component.entityId === entityId && component.componentName === componentName && component.classId) {
-        ecs7DeleteComponent(state, entityId, component.classId)
-        return
-      }
-    }
+    proxyRemoveEntityComponent(state, entityId, componentName)
   }
 
   function addEntity(entityId: EntityID): void {
-    if (state.entities[entityId]) {
-      engine.removeEntity(state.entities[entityId])
-    }
-    ecs7EnsureEntity(state, entityId)
+    proxyAddEntity(state, entityId)
   }
 
   function setParent(entityId: string, parentId: string): void {
-    if (parentId === '0') return
-    const parentEntity = ecs7EnsureEntity(state, parentId)
-    const transform = ecs7EnsureMutable(state, engine.baseComponents.Transform, entityId)
-    transform.parent = parentEntity
+    proxySetParent(state, entityId, parentId)
   }
 
   function removeEntity(entityId: EntityID): void {
-    if (state.entities[entityId] === undefined) {
-      return
-    }
-    engine.removeEntity(state.entities[entityId])
-    delete state.entities[entityId]
+    proxyRemoveEntity(state, entityId)
   }
 
   function componentCreated(id: string, componentName: string, classId: number) {
-    state.components[id] = {
-      classId,
-      componentName
-    }
+    proxyComponentCreated(state, id, componentName, classId)
   }
 
   function componentDisposed(id: string) {
-    if (state.components[id]) {
-      const component = state.components[id]
-      if (component.entityId && component.classId) {
-        ecs7DeleteComponent(state, component.entityId, component.classId)
-      }
-      delete state.components[id]
-    }
+    proxyComponentDisposed(state, id)
   }
 
   function componentUpdated(id: string, json: string) {
-    ensureEcs6ComponentState(id)
-    const component = state.components[id]
-    component.data = JSON.parse(json)
-    if (component.classId && component.entityId) {
-      ecs7UpdateComponent(state, component.entityId, component.classId, component.data)
-    }
+    proxyComponentUpdated(state, id, json)
   }
 
   function updateEntityComponent(entityId: string, componentName: string, classId: number, json: string): void {
-    const payload = JSON.parse(json)
-    ecs7UpdateComponent(state, entityId, classId, payload)
+    proxyUpdateEntityComponent(state, entityId, componentName, classId, json)
   }
 
   // Actions
@@ -140,6 +108,8 @@ export namespace AdaptionLayer {
         error('Error onLegacyUpdate', err)
       }
     }
+
+    proxyHandleTick()
   }
 
   export async function getPatchedDecentralandInterface(): Promise<DecentralandInterface> {
