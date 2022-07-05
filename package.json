@@ -9,12 +9,13 @@
     "ecs:install": "npm install --save-dev decentraland-ecs@latest",
     "ecs:install-next": "npm install --save-dev decentraland-ecs@next",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "build-old-scene": "cd old-scene && npm run build && cp bin/game.js ./../ecs6/game.data"
   },
   "devDependencies": {
     "@dcl/eslint-config": "^1.0.1",
-    "decentraland": "https://sdk-team-cdn.decentraland.org/decentraland-cli/branch/temp/sdk7/decentraland-3.10.5-20220621153604.commit-b31c6d9.tgz",
-    "@dcl/sdk": "next"
+    "@dcl/sdk": "https://sdk-team-cdn.decentraland.org/@dcl/js-sdk-toolchain/branch/feat/add-pointer-down/dcl-sdk-7.0.0-2595473629.commit-899b70f.tgz",
+    "decentraland": "https://sdk-team-cdn.decentraland.org/decentraland-cli/branch/temp/sdk7/decentraland-3.10.5-20220621153604.commit-b31c6d9.tgz"
   },
   "engines": {
     "node": ">=14.0.0",
