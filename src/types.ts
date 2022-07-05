@@ -59,7 +59,7 @@ export enum ECS6_CLASS_ID {
   VISIBLE_ON_EDIT = 302
 }
 
-const ECS6_CLASS_ID_BYPASS = [
+export const ECS6_CLASS_ID_BYPASS = [
   ECS6_CLASS_ID.UI_WORLD_SPACE_SHAPE,
   ECS6_CLASS_ID.UI_SCREEN_SPACE_SHAPE,
   ECS6_CLASS_ID.UI_CONTAINER_RECT,
@@ -83,15 +83,36 @@ export type ECS6State = {
   onEventFunctions: ((event: any) => void)[]
   subscribedEvents: Set<string>
 
-  entities: Record<string, Entity>
-  components: Record<string, Ecs6ComponentData>
+  ecs7: {
+    entities: Record<string, Entity>
+    components: Record<string, Ecs6ComponentData>
+  }
 
   ecs6: {
-    entities: Record<string, any>
-    components: Record<string, any>
+    entities: Record<
+      string,
+      {
+        componentsName: Record<
+          string,
+          {
+            classId: number
+          }
+        >
+      }
+    >
 
-    dirtiyEntities: Set<string>
-    dirtyComponents: Set<string>
+    // Components with ID
+    componentsWithId: Record<
+      string,
+      {
+        componentName: string
+        classId: number
+        disposed: boolean
+        json: string
+      }
+    >
+
+    events: EventItem[]
   }
 }
 
@@ -102,3 +123,79 @@ export type ComponentAdaptation = {
   update: UpdateFunction
   remove: DeleteFunction
 }
+
+export type AttachEntityComponentEvent = {
+  method: 'attachEntityComponent'
+  data: {
+    entityId: string
+    componentName: string
+    id: string
+  }
+}
+export type RemoveEntityComponentEvent = {
+  method: 'removeEntityComponent'
+  data: {
+    entityId: string
+    componentName: string
+  }
+}
+export type AddEntityEvent = {
+  method: 'addEntity'
+  data: {
+    entityId: EntityID
+  }
+}
+export type SetParentEvent = {
+  method: 'setParent'
+  data: {
+    entityId: string
+    parentId: string
+  }
+}
+export type RemoveEntityEvent = {
+  method: 'removeEntity'
+  data: {
+    entityId: EntityID
+  }
+}
+export type ComponentCreatedEvent = {
+  method: 'componentCreated'
+  data: {
+    id: string
+    componentName: string
+    classId: number
+  }
+}
+export type ComponentDisposedEvent = {
+  method: 'componentDisposed'
+  data: {
+    id: string
+  }
+}
+export type ComponentUpdatedEvent = {
+  method: 'componentUpdated'
+  data: {
+    id: string
+    json: string
+  }
+}
+export type UpdateEntityComponentEvent = {
+  method: 'updateEntityComponent'
+  data: {
+    entityId: string
+    componentName: string
+    classId: number
+    json: string
+  }
+}
+
+export type EventItem =
+  | AttachEntityComponentEvent
+  | RemoveEntityComponentEvent
+  | AddEntityEvent
+  | SetParentEvent
+  | RemoveEntityEvent
+  | ComponentCreatedEvent
+  | ComponentDisposedEvent
+  | ComponentUpdatedEvent
+  | UpdateEntityComponentEvent

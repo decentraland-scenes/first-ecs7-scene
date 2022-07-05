@@ -1,7 +1,6 @@
-import { AdaptionLayer } from './DecentralandInterface'
-import { getGameData } from './getEcs6GameData'
-import { LegacyECS } from './LegacyDecentralandInterface'
-import { customEval } from './sandbox'
+import { getGameData } from './runtime/getEcs6GameData'
+import { LegacyECS } from './debug/LegacyDecentralandInterface'
+import { customEval } from './runtime/sandbox'
 
 async function start() {
   const gamejs = await getGameData()

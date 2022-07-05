@@ -42,6 +42,7 @@ function spawnCube(x: number, y: number, z: number) {
 const cube = spawnCube(8, 1, 8)
 
 let otherCube: Entity | null = null
+let otherCube2: Entity | null = null
 let counter = 0
 
 cube.addComponent(
@@ -72,6 +73,9 @@ cube.addComponent(
         otherCube?.removeComponent(Transform)
         break;
 
+      case 8:
+
+        break;
 
       default:
         break;

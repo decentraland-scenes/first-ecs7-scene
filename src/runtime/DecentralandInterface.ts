@@ -9,8 +9,8 @@ import {
   proxyRemoveEntityComponent,
   proxySetParent,
   proxyUpdateEntityComponent
-} from './ecs6/ProxyEcs6'
-import { ECS6State } from './types'
+} from './../ecs6/proxy'
+import { ECS6State } from './../types'
 
 export namespace AdaptionLayer {
   const state: ECS6State = {
@@ -109,7 +109,7 @@ export namespace AdaptionLayer {
       }
     }
 
-    proxyHandleTick()
+    proxyHandleTick(state)
   }
 
   export async function getPatchedDecentralandInterface(): Promise<DecentralandInterface> {
