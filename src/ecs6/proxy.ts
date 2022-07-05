@@ -217,6 +217,13 @@ export function proxyUpdateEntityComponent(
 }
 
 function hasEntityBypassableComponent(state: ECS6State, entityId: string): boolean {
+  if (state.ecs6.entities[entityId]) {
+    for (const [_componentName, data] of Object.entries(state.ecs6.entities[entityId].componentsName)) {
+      if (isBypassableClassId(data.classId)) {
+        return true
+      }
+    }
+  }
   return false
 }
 
@@ -288,6 +295,7 @@ export function proxyHandleTick(state: ECS6State) {
       adaptToEcs7(state, event)
     }
   }
+  state.ecs6.events = []
 }
 
 /**

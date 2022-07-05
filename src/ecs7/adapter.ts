@@ -12,7 +12,8 @@ function ensureEcs6ComponentState(state: ECS6State, id: string) {
 // ECS6 core
 function ecs7AttachEntityComponent(state: ECS6State, entityId: string, componentName: string, id: string): void {
   const component = ensureEcs6ComponentState(state, id)
-  if (component.classId && component.entityId) {
+  component.entityId = entityId
+  if (component.classId) {
     ecs7UpdateComponent(state, component.entityId, component.classId, component.data || {})
   }
 }

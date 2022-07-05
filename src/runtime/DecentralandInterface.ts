@@ -18,10 +18,17 @@ export namespace AdaptionLayer {
     onStartFunctions: [],
     onEventFunctions: [],
     subscribedEvents: new Set<string>(),
+    ecs7: {
+      entities: {},
+      components: {}
+    },
 
-    entities: {},
-    components: {}
-  } as any
+    ecs6: {
+      entities: {},
+      componentsWithId: {},
+      events: []
+    }
+  }
 
   // ECS6 core
   function attachEntityComponent(entityId: string, componentName: string, id: string): void {
@@ -100,6 +107,7 @@ export namespace AdaptionLayer {
     return dcl.callRpc(rpcHandle, methodName, args)
   }
 
+  let t = 0
   function onLegacyUpdate(dt: number) {
     for (const cb of state.onUpdateFunctions) {
       try {
@@ -110,6 +118,15 @@ export namespace AdaptionLayer {
     }
 
     proxyHandleTick(state)
+    t += dt
+
+    if (t > 1) {
+      t = 0
+      dcl.log({ state })
+      for (const [entity, c] of engine.groupOf(engine.baseComponents.BoxShape)) {
+        dcl.log({ entity, c })
+      }
+    }
   }
 
   export async function getPatchedDecentralandInterface(): Promise<DecentralandInterface> {
