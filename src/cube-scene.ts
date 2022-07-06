@@ -40,6 +40,48 @@ dcl.onUpdate((dt: number) => {
 })
 
 
+const sign = engine.addEntity(true)
+engine.baseComponents.Transform.create(sign,{
+    position: { x:8, y:5, z:3 },
+    scale: { x: 1, y: 1, z: 1},
+    rotation: { x: 0, y: 0, z: 0, w: 0 }
+  })
+
+//   engine.baseComponents.CylinderShape.create(sign, {
+//     withCollisions: true,
+//     isPointerBlocker: true,
+//     visible: true,
+//     radiusTop: 0,
+//     radiusBottom: 1
+//   })
+
+engine.baseComponents.TextShape.create(sign,{
+    text: 'Stress test SDK v7.0-EA\n16x16 cubes',
+    font: 'SansSerif',
+    fontAutoSize: false,
+    fontSize: 5,
+    height: 2,
+    width: 4,
+    lineCount: 1,
+    lineSpacing: 1,
+    opacity: 1,
+    outlineWidth: 0.1,
+    outlineColor: { r: 0, g: 0, b: 1 },
+    textColor: { r: 1, g: 0, b: 0 },
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 0,
+    shadowBlur: 1,
+    shadowColor: { r: 1, g: 0, b: 0 },
+    shadowOffsetX: 0,
+    shadowOffsetY: 5,
+    textWrapping: false,
+    hTextAlign: 'center',
+    vTextAlign: 'center',
+    visible: true
+  })
+
 
 // engine.addSystem(timeOutUpdate)
 
