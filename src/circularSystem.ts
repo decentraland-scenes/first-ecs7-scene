@@ -1,17 +1,16 @@
-export type CircularSystemState = {
-  t: number
-}
 
+
+var circularState: number = 0
 // My system
-export function circularSystem(dt: number, state: CircularSystemState) {
-  state.t += 2 * Math.PI * dt
+export function circularSystem(dt: number) {
+	circularState += 2 * Math.PI * dt
 
   const entitiesWithBoxShapes = engine.groupOf(engine.baseComponents.BoxShape)
   for (const [entity] of entitiesWithBoxShapes) {
     const transform = engine.baseComponents.Transform.mutable(entity)
     if (transform) {
-      transform.position.x = 8 + 2 * Math.cos(state.t)
-      transform.position.z = 8 + 2 * Math.sin(state.t)
+      transform.position.x = 8 + 2 * Math.cos(circularState)
+      transform.position.z = 8 + 2 * Math.sin(circularState)
     }
   }
 }
@@ -19,10 +18,11 @@ export function circularSystem(dt: number, state: CircularSystemState) {
 
 
 
+var hoverState: number = 0
 
-export function CircleHoverSystem (dt: number, state: CircularSystemState){
+export function CircleHoverSystem (dt: number){
 
-	state.t +=  Math.PI * dt * 0.5
+	hoverState +=  Math.PI * dt * 0.5
 
 	const entitiesWithBoxShapes = engine.groupOf(engine.baseComponents.BoxShape)
  
@@ -33,7 +33,7 @@ export function CircleHoverSystem (dt: number, state: CircularSystemState){
 
 
       // mutate the position
-      transform.position.y = Math.cos(state.t + Math.sqrt(Math.pow(transform.position.x - 8, 2) + Math.pow(transform.position.z - 8, 2)) / Math.PI) * 2 + 2;
+      transform.position.y = Math.cos(hoverState + Math.sqrt(Math.pow(transform.position.x - 8, 2) + Math.pow(transform.position.z - 8, 2)) / Math.PI) * 2 + 2;
       
       //entity.getComponent(Material).albedoColor.set(transform.position.x / 16, transform.position.y / 16, transform.position.z / 4);
     }

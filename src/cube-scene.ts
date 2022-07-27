@@ -32,28 +32,16 @@ for (var x = 0.5; x < 16; x += 1) {
 }
 
 
-addSystem(CircleHoverSystem, { t: 0 })
-
-
-dcl.onUpdate((dt: number) => {
-  engine.update(dt)
-})
+engine.addSystem(CircleHoverSystem)
 
 
 const sign = engine.addEntity(true)
 engine.baseComponents.Transform.create(sign,{
-    position: { x:8, y:5, z:3 },
-    scale: { x: 1, y: 1, z: 1},
+    position: { x:8, y:5, z:8 },
+    scale: { x: 1.2, y: 1.2, z: 1.2},
     rotation: { x: 0, y: 0, z: 0, w: 0 }
   })
 
-//   engine.baseComponents.CylinderShape.create(sign, {
-//     withCollisions: true,
-//     isPointerBlocker: true,
-//     visible: true,
-//     radiusTop: 0,
-//     radiusBottom: 1
-//   })
 
 engine.baseComponents.TextShape.create(sign,{
     text: 'Stress test SDK v7.0-EA\n16x16 cubes',
